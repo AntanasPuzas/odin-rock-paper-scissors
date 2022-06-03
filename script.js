@@ -40,14 +40,14 @@ let playRound = (playerSelection, computerSelection) => {
 }
 
 let game = () => {
-    let playerSelection;
     for (let i = 0; i < 5; i++) {
-        playerSelection = prompt("Rock, Paper or Scissors?");
-        computerSelection = computerPlay();
-        console.log("Computer chooses " + computerSelection + "!");
-        console.log(playRound(playerSelection, computerSelection));
+        let playerSelection = prompt("Rock, Paper or Scissors?");
+        let computerSelection = computerPlay();
+
+        alert("Computer chooses " + computerSelection + "!" + "\n" + 
+        playRound(playerSelection, computerSelection));
     }
-    console.log("Game Over!");
+    alert("Game Over!");
 }
 
 game();
