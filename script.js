@@ -16,7 +16,7 @@ let playRound = (playerSelection, computerSelection) => {
 
     if (choices.player === choices.computer) {
         result = 0;
-    } 
+    }
 
     for (let i = 0; i < winningConditions.length; i++) {
         if (JSON.stringify(choices) === JSON.stringify(winningConditions[i])) {
@@ -25,3 +25,24 @@ let playRound = (playerSelection, computerSelection) => {
     }
     return result;
 }
+
+let game = () => {
+    for (let i = 0; i < 5; i++) {
+        let computerSelection = computerPlay();
+        let playerSelection = prompt("Please input Rock, Paper or Scissors:");
+        let playerSelectionFormatted = playerSelection.charAt(0).toUpperCase() +
+            playerSelection.slice(1).toLowerCase();
+        let roundOutcome = playRound(playerSelection, computerSelection);
+
+        alert("Computer selection: " + computerSelection + "\n"
+            + "Player selection: " + playerSelectionFormatted + "\n" +
+            (roundOutcome === "Error" ? "Error"
+                : roundOutcome === 0 ? "It's a Draw! Go Again!"
+                    : roundOutcome === -1 ? "You Lose! " + computerSelection +
+                        " beats " + playerSelectionFormatted + "!"
+                        : "You Win! " + playerSelectionFormatted + " beats " + computerSelection + "!"));
+    }
+    alert("Game Over!");
+}
+
+game();
