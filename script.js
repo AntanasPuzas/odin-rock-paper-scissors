@@ -26,23 +26,29 @@ let playRound = (playerSelection, computerSelection) => {
     return result;
 }
 
-let game = () => {
-    for (let i = 0; i < 5; i++) {
-        let computerSelection = computerPlay();
-        let playerSelection = prompt("Please input Rock, Paper or Scissors:");
-        let playerSelectionFormatted = playerSelection.charAt(0).toUpperCase() +
-            playerSelection.slice(1).toLowerCase();
-        let roundOutcome = playRound(playerSelection, computerSelection);
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
 
-        alert("Computer selection: " + computerSelection + "\n"
-            + "Player selection: " + playerSelectionFormatted + "\n" +
-            (roundOutcome === "Error" ? "Error"
-                : roundOutcome === 0 ? "It's a Draw! Go Again!"
-                    : roundOutcome === -1 ? "You Lose! " + computerSelection +
-                        " beats " + playerSelectionFormatted + "!"
-                        : "You Win! " + playerSelectionFormatted + " beats " + computerSelection + "!"));
-    }
-    alert("Game Over!");
-}
+rockButton.addEventListener("click", () => console.log(playRound("rock", computerPlay())));
+paperButton.addEventListener("click", () => console.log(playRound("paper", computerPlay())));
+scissorsButton.addEventListener("click", () => console.log(playRound("scissors", computerPlay())));
 
-game();
+// let game = () => {
+//     let computerSelection = computerPlay();
+//     let playerSelection = prompt("Please input Rock, Paper or Scissors:");
+//     let playerSelectionFormatted = playerSelection.charAt(0).toUpperCase() +
+//         playerSelection.slice(1).toLowerCase();
+//     let roundOutcome = playRound(playerSelection, computerSelection);
+
+//     console.log("Computer selection: " + computerSelection + "\n"
+//         + "Player selection: " + playerSelectionFormatted + "\n" +
+//         (roundOutcome === "Error" ? "Error"
+//             : roundOutcome === 0 ? "It's a Draw! Go Again!"
+//                 : roundOutcome === -1 ? "You Lose! " + computerSelection +
+//                     " beats " + playerSelectionFormatted + "!"
+//                     : "You Win! " + playerSelectionFormatted + " beats " + computerSelection + "!"));
+//     console.log("Game Over!");
+// }
+
+// game();
