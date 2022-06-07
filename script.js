@@ -3,10 +3,12 @@ let computerPlay = () => {
     return random === 1 ? "Rock" : random === 2 ? "Paper" : "Scissors";
 }
 
-let possiblePlayerSelection = ["rock", "paper", "scissors"];
-let winningConditions = [{ player: "rock", computer: "scissors" }, { player: "scissors", computer: "paper" },
+const possiblePlayerSelection = ["rock", "paper", "scissors"];
+const winningConditions = [{ player: "rock", computer: "scissors" }, { player: "scissors", computer: "paper" },
 { player: "paper", computer: "rock" }];
 
+
+// Plays a round and returns 0 for draw, 1 for player win and -1 for player lose
 let playRound = (playerSelection, computerSelection) => {
     let choices = { player: playerSelection.toLowerCase(), computer: computerSelection.toLowerCase() };
     let result = -1;
@@ -30,9 +32,12 @@ const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 
-rockButton.addEventListener("click", () => console.log(playRound("rock", computerPlay())));
-paperButton.addEventListener("click", () => console.log(playRound("paper", computerPlay())));
-scissorsButton.addEventListener("click", () => console.log(playRound("scissors", computerPlay())));
+const resultsDiv = document.querySelector("#results");
+const resultsText = document.querySelector("#results-text")
+
+rockButton.addEventListener("click", () => resultsDiv.textContent = playRound("rock", computerPlay()));
+paperButton.addEventListener("click", () => resultsDiv.textContent = playRound("paper", computerPlay()));
+scissorsButton.addEventListener("click", () => resultsDiv.textContent = playRound("scissors", computerPlay()));
 
 // let game = () => {
 //     let computerSelection = computerPlay();
