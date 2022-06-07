@@ -52,10 +52,34 @@ function resultString(roundOutcome, playerSelection, computerSelection) {
     return result;
 }
 
+let counter = 0;
+let playerWin = 0;
+let computerWin = 0;
+
+const counterDiv = document.querySelector("#counter");
+const playerDiv = document.querySelector("#player-win");
+const computerDiv = document.querySelector("#computer-win");
+
 let game = (playerSelection) => {
     let computerSelection = computerPlay();
     let roundOutcome = playRound(playerSelection, computerSelection);
     playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+
+    counter++;
+    counterDiv.textContent = "Rounds Played: " + counter;
+
+    switch (roundOutcome) {
+        case 0:
+            break;
+        case -1:
+            computerWin++;
+            break;
+        case 1:
+            playerWin++;
+            break;
+    }
+    playerDiv.textContent = "Player Wins: " + playerWin;
+    computerDiv.textContent = "Computer Wins: " + computerWin;
 
     return resultString(roundOutcome, playerSelection, computerSelection);
 }
